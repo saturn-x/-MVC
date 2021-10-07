@@ -6,6 +6,7 @@ import base.User;
 import base.UserName;
 import framework.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
@@ -30,7 +31,7 @@ public class Index {
  */
     //访问主页
     @GetPath("/")
-    public ModelAndView getIndex(HttpSession session){
+    public ModelAndView getIndex(HttpSession session, HttpServletRequest req){
         //查看是否已经登陆
         User user = (User) session.getAttribute("user");
         return new ModelAndView("/index.html", "user", user);
