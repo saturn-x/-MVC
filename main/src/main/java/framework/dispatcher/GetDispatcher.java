@@ -57,4 +57,8 @@ public class GetDispatcher extends AbstractDispatcher {
         String s = request.getParameter(name);
         return s == null ? defaultValue : s;
     }
+
+    public Method getMethod() {
+        return this.method;
+    }
 }

@@ -34,7 +34,7 @@ public class Index {
     public ModelAndView getIndex(HttpSession session, HttpServletRequest req){
         //查看是否已经登陆
         User user = (User) session.getAttribute("user");
-        return new ModelAndView("/index.html", "user", user);
+        return new ModelAndView("index.html", "user", user);
     }
     @GetPath("/signin")
     public ModelAndView signin() {
@@ -44,6 +44,8 @@ public class Index {
     public ModelAndView doSignin(UserName bean, HttpServletResponse response, HttpSession session)
             throws IOException {
         //根据账户获取 对应的信息
+        System.out.println("有账户正在登陆····");
+        System.out.println("打印该账户"+bean.username+" "+bean.password);
         User user = (User) userDatabase.get(bean.username);
         if (user == null || !user.password.equals(bean.password)) {
             response.setContentType("application/json");

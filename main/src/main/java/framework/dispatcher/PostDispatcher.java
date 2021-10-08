@@ -42,6 +42,15 @@ public class PostDispatcher extends AbstractDispatcher {
                 arguments[i] = this.objectMapper.readValue(reader, parameterClass);
             }
         }
+        System.out.println("打印invoke的参数列表");
+        for (Object i:arguments
+             ) {
+            System.out.println(i);
+        }
         return (ModelAndView) this.method.invoke(instance, arguments);
+    }
+
+    public Method getMethod() {
+        return this.method;
     }
 }
